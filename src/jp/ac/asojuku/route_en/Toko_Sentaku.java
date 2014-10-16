@@ -42,8 +42,12 @@ public class Toko_Sentaku extends Activity implements View.OnClickListener {
 		// button1
 		case R.id.button1:
 			// MainActivityに遷移
-			Intent intent = new Intent(Toko_Sentaku.this, MainActivity.class);
-			startActivity(intent);
+			Intent intent1 = new Intent(Toko_Sentaku.this, MainActivity.class);
+			startActivity(intent1);
+		case R.id.listView1:
+			// 選択画面に遷移
+			Intent intent2 = new Intent(Toko_Sentaku.this, Toko_Henshu.class);
+			startActivity(intent2);
 
 		}
 
