@@ -1,5 +1,17 @@
 package jp.ac.asojuku.route_en;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,6 +62,39 @@ public class Toko_Sentaku extends Activity implements View.OnClickListener {
 			startActivity(intent2);
 
 		}
+
+	}
+
+	/**
+	 * 指定URLからgetした文字列を取得する
+	 * @param sUrl
+	 * @return
+	 */
+	public String getData(String sUrl) {
+		HttpClient objHttp = new DefaultHttpClient();
+		HttpParams params = objHttp.getParams();
+		HttpConnectionParams.setConnectionTimeout(params, 1000); // 接続のタイムアウト
+		HttpConnectionParams.setSoTimeout(params, 1000); // データ取得のタイムアウト
+		String sReturn = "";
+		try {
+			HttpGet objGet = new HttpGet(sUrl);
+			HttpResponse objResponse = objHttp.execute(objGet);
+			if (objResponse.getStatusLine().getStatusCode() < 400) {
+				InputStream objStream = objResponse.getEntity().getContent();
+				InputStreamReader objReader = new InputStreamReader(objStream);
+				BufferedReader objBuf = new BufferedReader(objReader);
+				StringBuilder objJson = new StringBuilder();
+				String sLine;
+				while ((sLine = objBuf.readLine()) != null) {
+					objJson.append(sLine);
+				}
+				sReturn = objJson.toString();
+				objStream.close();
+			}
+		} catch (IOException e) {
+			return null;
+		}
+		return sReturn;
 
 	}
 
