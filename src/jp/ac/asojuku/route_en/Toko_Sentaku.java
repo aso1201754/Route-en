@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,6 +39,15 @@ public class Toko_Sentaku extends Activity implements View.OnClickListener {
 		ListView lv1 = (ListView)findViewById(R.id.listView1);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, members);
 		lv1.setAdapter(adapter);
+		// lv1クリック時
+		lv1.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO 自動生成されたメソッド・スタブ
+				Intent intent2 = new Intent(Toko_Sentaku.this, Toko_Henshu.class);
+				startActivity(intent2);
+			}
+		});
 	}
 
 	@Override
@@ -56,10 +66,6 @@ public class Toko_Sentaku extends Activity implements View.OnClickListener {
 			// MainActivityに遷移
 			Intent intent1 = new Intent(Toko_Sentaku.this, MainActivity.class);
 			startActivity(intent1);
-		case R.id.listView1:
-			// 選択画面に遷移
-			Intent intent2 = new Intent(Toko_Sentaku.this, Toko_Henshu.class);
-			startActivity(intent2);
 
 		}
 
