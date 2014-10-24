@@ -18,6 +18,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Toko_Henshu extends Activity implements View.OnClickListener {
 
@@ -25,6 +28,9 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	String text2;
 	String text3;
 	String text4;
+
+	  private Button btn = null;
+	  private TextView tv = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,12 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		// button4登録
 		Button button4 = (Button)findViewById(R.id.button4);
 		button4.setOnClickListener(this);
+
+	    btn = (Button)findViewById(R.id.btn1);
+	    tv = (TextView)findViewById(R.id.tv1);
+
+	    btn.setOnClickListener(this);
+
 
 		// editText1
 		EditText editText1 = (EditText)findViewById(R.id.editText1);
@@ -53,8 +65,27 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		SpannableStringBuilder sb4 = (SpannableStringBuilder)editText4.getText();
 		text4 = sb4.toString();
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+		adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// アイテムを追加します
+		adapter1.add("福岡県");
+		adapter1.add("佐賀県");
+		adapter1.add("長崎県");
+		Spinner spinner1 = (Spinner)findViewById(R.id.spinner1);
+		// アダプターを設定します
+		spinner1.setAdapter(adapter1);
+
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// アイテムを追加します
+		adapter2.add("デート");
+		adapter2.add("一人で");
+		adapter2.add("家族で");
+		adapter2.add("旅行");
+		adapter2.add("おまかせ！");
+		Spinner spinner2 = (Spinner)findViewById(R.id.spinner2);
+		// アダプターを設定します
+		spinner2.setAdapter(adapter2);
 
 	}
 
@@ -63,9 +94,11 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		// TODO 自動生成されたメソッド・スタブ
 		switch(v.getId()){
 		case R.id.button4:
+			doPost("http://toenp.php.xdomain.jp/test.php");
 			Intent intent4 = new Intent(Toko_Henshu.this, Toko_Sentaku.class);
 			startActivity(intent4);
-			doPost("http://");
+		case R.id.btn1:
+			exec_post();
 		}
 
 	}
@@ -76,8 +109,7 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 
 		// リクエストパラメータの設定
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("params_id", text1));
-		params.add(new BasicNameValuePair("params_data", text2));
+		params.add(new BasicNameValuePair("text1", "aaaa"));
 		try {
 			method.setEntity(new UrlEncodedFormEntity(params, "utf-8"));
 			HttpResponse response = client.execute(method);
@@ -87,5 +119,42 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			return "Error:" + e.getMessage();
 		}
 	}
+
+	// POST通信を実行（AsyncTaskによる非同期処理を使うバージョン）
+	  private void exec_post() {
+
+	    // 非同期タスクを定義
+	    HttpPostTask task = new HttpPostTask(
+	      this,
+	      "http://toenp.php.xdomain.jp/test.php",
+
+	      // タスク完了時に呼ばれるUIのハンドラ
+	      new HttpPostHandler(){
+
+	        @Override
+	        public void onPostCompleted(String response) {
+	          // 受信結果をUIに表示
+	          tv.setText( response );
+	        }
+
+	        @Override
+	        public void onPostFailed(String response) {
+	          tv.setText( response );
+	          Toast.makeText(
+	            getApplicationContext(),
+	            "エラーが発生しました。",
+	            Toast.LENGTH_LONG
+	          ).show();
+	        }
+	      }
+	    );
+	    task.addPostParam( "text1", "ユーザID" );
+	    task.addPostParam( "text2", "パスワード" );
+
+	    // タスクを開始
+	    task.execute();
+
+	  }
+
 
 }
