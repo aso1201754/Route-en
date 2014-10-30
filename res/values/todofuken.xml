@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinner1_item1">
+        <item name="key">P01</item>
+        <item name="value">北海道</item>
+    </string-array>
+    <string-array name="spinner1_item2">
+        <item name="key">P02</item>
+        <item name="value">岩手県</item>
+    </string-array>
+    <string-array name="spinner1_item3">
+        <item name="key">P03</item>
+        <item name="value">青森県</item>
+    </string-array>
+    <string-array name="spinner1_item4">
+        <item name="key">P04</item>
+        <item name="value">宮城県</item>
+    </string-array>
+    <string-array name="spinner1_item5">
+        <item name="key">P05</item>
+        <item name="value">秋田県</item>
+    </string-array>
+    <string-array name="spinner1_item6">
+        <item name="key">P06</item>
+        <item name="value">山形県</item>
+    </string-array>
+    <string-array name="spinner1_item7">
+        <item name="key">P07</item>
+        <item name="value">福島県</item>
+    </string-array>
+    <string-array name="spinner1_item8">
+        <item name="key">P08</item>
+        <item name="value">茨城県</item>
+    </string-array>
+    <string-array name="spinner1_item9">
+        <item name="key">P09</item>
+        <item name="value">栃木県</item>
+    </string-array>
+    <string-array name="spinner1_item10">
+        <item name="key">P10</item>
+        <item name="value">群馬県</item>
+    </string-array>
+    <string-array name="spinner1_item11">
+        <item name="key">P11</item>
+        <item name="value">埼玉県</item>
+    </string-array>
+    <string-array name="spinner1_item12">
+        <item name="key">P12</item>
+        <item name="value">千葉県</item>
+    </string-array>
+    <string-array name="spinner1_item13">
+        <item name="key">P13</item>
+        <item name="value">東京都</item>
+    </string-array>
+    <string-array name="spinner1_item14">
+        <item name="key">P14</item>
+        <item name="value">神奈川県</item>
+    </string-array>
+    <string-array name="spinner1_item15">
+        <item name="key">P15</item>
+        <item name="value">新潟県</item>
+    </string-array>
+
+    <array name="spinner1_data">
+        <item>@array/spinner1_item1</item>
+        <item>@array/spinner1_item2</item>
+        <item>@array/spinner1_item3</item>
+    </array>
+</resources>

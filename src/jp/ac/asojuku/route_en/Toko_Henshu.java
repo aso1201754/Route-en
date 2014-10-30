@@ -12,9 +12,13 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,8 +33,11 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	String text3;
 	String text4;
 
-	  private Button btn = null;
-	  private TextView tv = null;
+	private Button btn = null;
+	private TextView tv = null;
+
+	private Spinner _spinner = null;
+	KeyValuePair item;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +49,10 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		Button button4 = (Button)findViewById(R.id.button4);
 		button4.setOnClickListener(this);
 
-	    btn = (Button)findViewById(R.id.btn1);
-	    tv = (TextView)findViewById(R.id.tv1);
+		btn = (Button)findViewById(R.id.btn1);
+		tv = (TextView)findViewById(R.id.tv1);
 
-	    btn.setOnClickListener(this);
+		btn.setOnClickListener(this);
 
 
 		// editText1
@@ -65,6 +72,7 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		SpannableStringBuilder sb4 = (SpannableStringBuilder)editText4.getText();
 		text4 = sb4.toString();
 
+		/*
 		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
 		adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// アイテムを追加します
@@ -74,6 +82,19 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		Spinner spinner1 = (Spinner)findViewById(R.id.spinner1);
 		// アダプターを設定します
 		spinner1.setAdapter(adapter1);
+		 */
+
+		//スピナー
+		_spinner =  (Spinner)this.findViewById(R.id.spinner1);
+		_spinner.setOnItemSelectedListener(Spinner1_OnItemSelectedListener);
+		//スピナーのドロップダウンアイテムを設定
+		List<KeyValuePair> list = getSpinnerData();
+		KeyValuePairArrayAdapter adapter = new KeyValuePairArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		_spinner.setAdapter(adapter);
+		//キーが2の値を選択する
+		// Integer selectKey = 2;
+		//_spinner.setSelection(adapter.getPosition(selectKey));
 
 		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -121,40 +142,71 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	}
 
 	// POST通信を実行（AsyncTaskによる非同期処理を使うバージョン）
-	  private void exec_post() {
+	private void exec_post() {
 
-	    // 非同期タスクを定義
-	    HttpPostTask task = new HttpPostTask(
-	      this,
-	      "http://toenp.php.xdomain.jp/test.php",
+		// 非同期タスクを定義
+		HttpPostTask task = new HttpPostTask(
+				this,
+				"http://toenp.php.xdomain.jp/test.php",
 
-	      // タスク完了時に呼ばれるUIのハンドラ
-	      new HttpPostHandler(){
+				// タスク完了時に呼ばれるUIのハンドラ
+				new HttpPostHandler(){
 
-	        @Override
-	        public void onPostCompleted(String response) {
-	          // 受信結果をUIに表示
-	          tv.setText( response );
-	        }
+					@Override
+					public void onPostCompleted(String response) {
+						// 受信結果をUIに表示
+						tv.setText( response );
+					}
 
-	        @Override
-	        public void onPostFailed(String response) {
-	          tv.setText( response );
-	          Toast.makeText(
-	            getApplicationContext(),
-	            "エラーが発生しました。",
-	            Toast.LENGTH_LONG
-	          ).show();
-	        }
-	      }
-	    );
-	    task.addPostParam( "text1", "ユーザID" );
-	    task.addPostParam( "text2", "パスワード" );
+					@Override
+					public void onPostFailed(String response) {
+						tv.setText( response );
+						Toast.makeText(
+								getApplicationContext(),
+								"エラーが発生しました。",
+								Toast.LENGTH_LONG
+								).show();
+					}
+				}
+				);
+		task.addPostParam( "p_id", item.getKey().toString() );
+		task.addPostParam( "text2", "パスワード" );
 
-	    // タスクを開始
-	    task.execute();
+		// タスクを開始
+		task.execute();
 
-	  }
+	}
+
+	/**
+	 * @brief スピナーデータを取得します。
+	 * @return
+	 */
+	private List<KeyValuePair> getSpinnerData(){
+		List<KeyValuePair> list = new ArrayList<KeyValuePair>();
+		Resources res = getResources();
+		TypedArray spinner1_data = res.obtainTypedArray(R.array.spinner1_data);
+		for (int i = 0; i < spinner1_data.length(); ++i) {
+			int id = spinner1_data.getResourceId(i, -1);
+			if (id > -1) {
+				String[] item = res.getStringArray(id);
+				list.add(new KeyValuePair(item[0], item[1]));
+			}
+		}
+		spinner1_data.recycle();
+		return list;
+	}
+
+	/**
+	 * @brief スピナーのOnItemSelectedListener
+	 */
+	private OnItemSelectedListener Spinner1_OnItemSelectedListener = new OnItemSelectedListener() {
+		public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+			item = (KeyValuePair)_spinner.getSelectedItem();
+			Toast.makeText(Toko_Henshu.this, item.getKey().toString(), Toast.LENGTH_LONG).show();
+		}
+		public void onNothingSelected(AdapterView<?> arg0) {
+		}
+	};
 
 
 }

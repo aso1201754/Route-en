@@ -8,6 +8,24 @@
 package jp.ac.asojuku.route_en;
 
 public final class R {
+    public static final class array {
+        public static final int spinner1_data=0x7f07000f;
+        public static final int spinner1_item1=0x7f070000;
+        public static final int spinner1_item10=0x7f070009;
+        public static final int spinner1_item11=0x7f07000a;
+        public static final int spinner1_item12=0x7f07000b;
+        public static final int spinner1_item13=0x7f07000c;
+        public static final int spinner1_item14=0x7f07000d;
+        public static final int spinner1_item15=0x7f07000e;
+        public static final int spinner1_item2=0x7f070001;
+        public static final int spinner1_item3=0x7f070002;
+        public static final int spinner1_item4=0x7f070003;
+        public static final int spinner1_item5=0x7f070004;
+        public static final int spinner1_item6=0x7f070005;
+        public static final int spinner1_item7=0x7f070006;
+        public static final int spinner1_item8=0x7f070007;
+        public static final int spinner1_item9=0x7f070008;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -23,29 +41,32 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int image1=0x7f020001;
+        public static final int image2=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080014;
-        public static final int btn1=0x7f080011;
-        public static final int button1=0x7f080006;
-        public static final int button2=0x7f080009;
-        public static final int button3=0x7f08000c;
-        public static final int button4=0x7f08000f;
-        public static final int button5=0x7f080010;
-        public static final int editText1=0x7f080007;
-        public static final int editText2=0x7f08000a;
-        public static final int editText3=0x7f08000d;
-        public static final int editText4=0x7f08000e;
-        public static final int listView1=0x7f080013;
-        public static final int spinner1=0x7f080002;
-        public static final int spinner2=0x7f080003;
-        public static final int tableRow1=0x7f080005;
-        public static final int tableRow2=0x7f080008;
-        public static final int tableRow3=0x7f08000b;
-        public static final int textView1=0x7f080000;
-        public static final int textView2=0x7f080001;
-        public static final int textView3=0x7f080004;
-        public static final int tv1=0x7f080012;
+        public static final int action_settings=0x7f090015;
+        public static final int btn1=0x7f090011;
+        public static final int button1=0x7f090006;
+        public static final int button2=0x7f090009;
+        public static final int button3=0x7f09000c;
+        public static final int button4=0x7f09000f;
+        public static final int button5=0x7f090010;
+        public static final int editText1=0x7f090007;
+        public static final int editText2=0x7f09000a;
+        public static final int editText3=0x7f09000d;
+        public static final int editText4=0x7f09000e;
+        public static final int imageButton1=0x7f090013;
+        public static final int listView1=0x7f090014;
+        public static final int spinner1=0x7f090002;
+        public static final int spinner2=0x7f090003;
+        public static final int tableRow1=0x7f090005;
+        public static final int tableRow2=0x7f090008;
+        public static final int tableRow3=0x7f09000b;
+        public static final int textView1=0x7f090000;
+        public static final int textView2=0x7f090001;
+        public static final int textView3=0x7f090004;
+        public static final int tv1=0x7f090012;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -53,7 +74,7 @@ public final class R {
         public static final int toko_sentaku=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
