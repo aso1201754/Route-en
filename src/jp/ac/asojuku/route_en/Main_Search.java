@@ -18,7 +18,7 @@ public class Main_Search extends Activity implements View.OnClickListener{
 	String item2 = null;
 
 	private TextView tv = null;
-	private Spinner _spinner = null;
+	Spinner _spinner = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,6 @@ public class Main_Search extends Activity implements View.OnClickListener{
 		todouhuken.add(new KeyValuePair(34,"広島県"));
 		todouhuken.add(new KeyValuePair(35,"山口県"));
 		todouhuken.add(new KeyValuePair(36,"徳島県"));
-
 		todouhuken.add(new KeyValuePair(37,"香川県"));
 		todouhuken.add(new KeyValuePair(38,"愛媛県"));
 		todouhuken.add(new KeyValuePair(39,"高知県"));
@@ -95,12 +94,6 @@ public class Main_Search extends Activity implements View.OnClickListener{
 		//キーが2の値を選択する
 		Integer selectKey = 2;
 		_spinner.setSelection(todouhuken.getPosition(selectKey));
-
-
-
-
-
-
 
 
 
