@@ -53,7 +53,7 @@ public View getDropDownView(int position, View convertView, ViewGroup parent) {
  * @param key
  * @return
  */
-public int getPosition(int key){
+public int getPosition(String key){
     int position = -1;
     for (int i = 0 ; i < this.getCount(); i++){
         if (this.getItem(i).getKey() == key) {
@@ -64,4 +64,5 @@ public int getPosition(int key){
     return position;
 
 }
+
 }

@@ -2,13 +2,13 @@ package jp.ac.asojuku.route_en;
 
 import android.util.Pair;
 
-public class KeyValuePair extends Pair<Integer,String> {
+public class KeyValuePair extends Pair<String,String> {
 
-    public KeyValuePair(Integer key, String value) {
+    public KeyValuePair(String key, String value) {
         super(key, value);
     }
 
-    public Integer getKey(){
+    public String getKey(){
         return super.first;
     }
 
