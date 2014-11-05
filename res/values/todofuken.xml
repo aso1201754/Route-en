@@ -61,10 +61,182 @@
         <item name="key">P15</item>
         <item name="value">新潟県</item>
     </string-array>
+    <string-array name="spinner1_item16">
+        <item name="key">P16</item>
+        <item name="value">富山県</item>
+    </string-array>
+    <string-array name="spinner1_item17">
+        <item name="key">P17</item>
+        <item name="value">石川県</item>
+    </string-array>
+    <string-array name="spinner1_item18">
+        <item name="key">P18</item>
+        <item name="value">福井県</item>
+    </string-array>
+    <string-array name="spinner1_item19">
+        <item name="key">P19</item>
+        <item name="value">山梨県</item>
+    </string-array>
+    <string-array name="spinner1_item20">
+        <item name="key">P20</item>
+        <item name="value">長野県</item>
+    </string-array>
+    <string-array name="spinner1_item21">
+        <item name="key">P21</item>
+        <item name="value">岐阜県</item>
+    </string-array>
+    <string-array name="spinner1_item22">
+        <item name="key">P22</item>
+        <item name="value">静岡県</item>
+    </string-array>
+    <string-array name="spinner1_item23">
+        <item name="key">P23</item>
+        <item name="value">愛知県</item>
+    </string-array>
+    <string-array name="spinner1_item24">
+        <item name="key">P24</item>
+        <item name="value">三重県</item>
+    </string-array>
+    <string-array name="spinner1_item25">
+        <item name="key">P25</item>
+        <item name="value">滋賀県</item>
+    </string-array>
+    <string-array name="spinner1_item26">
+        <item name="key">P26</item>
+        <item name="value">京都府</item>
+    </string-array>
+    <string-array name="spinner1_item27">
+        <item name="key">P27</item>
+        <item name="value">大阪府</item>
+    </string-array>
+    <string-array name="spinner1_item28">
+        <item name="key">P28</item>
+        <item name="value">兵庫県</item>
+    </string-array>
+    <string-array name="spinner1_item29">
+        <item name="key">P29</item>
+        <item name="value">奈良県</item>
+    </string-array>
+    <string-array name="spinner1_item30">
+        <item name="key">P30</item>
+        <item name="value">和歌山県</item>
+    </string-array>
+    <string-array name="spinner1_item31">
+        <item name="key">P31</item>
+        <item name="value">鳥取県</item>
+    </string-array>
+    <string-array name="spinner1_item32">
+        <item name="key">P32</item>
+        <item name="value">島根県</item>
+    </string-array>
+    <string-array name="spinner1_item33">
+        <item name="key">P33</item>
+        <item name="value">岡山県</item>
+    </string-array>
+    <string-array name="spinner1_item34">
+        <item name="key">P34</item>
+        <item name="value">広島県</item>
+    </string-array>
+    <string-array name="spinner1_item35">
+        <item name="key">P35</item>
+        <item name="value">山口県</item>
+    </string-array>
+    <string-array name="spinner1_item36">
+        <item name="key">P36</item>
+        <item name="value">徳島県</item>
+    </string-array>
+    <string-array name="spinner1_item37">
+        <item name="key">P37</item>
+        <item name="value">香川県</item>
+    </string-array>
+    <string-array name="spinner1_item38">
+        <item name="key">P38</item>
+        <item name="value">愛媛県</item>
+    </string-array>
+    <string-array name="spinner1_item39">
+        <item name="key">P39</item>
+        <item name="value">高知県</item>
+    </string-array>
+    <string-array name="spinner1_item40">
+        <item name="key">P40</item>
+        <item name="value">福岡県</item>
+    </string-array>
+    <string-array name="spinner1_item41">
+        <item name="key">P41</item>
+        <item name="value">佐賀県</item>
+    </string-array>
+    <string-array name="spinner1_item42">
+        <item name="key">P42</item>
+        <item name="value">長崎県</item>
+    </string-array>
+    <string-array name="spinner1_item43">
+        <item name="key">P43</item>
+        <item name="value">熊本県</item>
+    </string-array>
+    <string-array name="spinner1_item44">
+        <item name="key">P44</item>
+        <item name="value">大分県</item>
+    </string-array>
+    <string-array name="spinner1_item45">
+        <item name="key">P45</item>
+        <item name="value">宮崎県</item>
+    </string-array>
+    <string-array name="spinner1_item46">
+        <item name="key">P46</item>
+        <item name="value">鹿児島県</item>
+    </string-array>
+    <string-array name="spinner1_item47">
+        <item name="key">P47</item>
+        <item name="value">沖縄県</item>
+    </string-array>
 
     <array name="spinner1_data">
         <item>@array/spinner1_item1</item>
         <item>@array/spinner1_item2</item>
         <item>@array/spinner1_item3</item>
+        <item>@array/spinner1_item4</item>
+        <item>@array/spinner1_item5</item>
+        <item>@array/spinner1_item6</item>
+        <item>@array/spinner1_item7</item>
+        <item>@array/spinner1_item8</item>
+        <item>@array/spinner1_item9</item>
+        <item>@array/spinner1_item10</item>
+        <item>@array/spinner1_item11</item>
+        <item>@array/spinner1_item12</item>
+        <item>@array/spinner1_item13</item>
+        <item>@array/spinner1_item14</item>
+        <item>@array/spinner1_item15</item>
+        <item>@array/spinner1_item16</item>
+        <item>@array/spinner1_item17</item>
+        <item>@array/spinner1_item18</item>
+        <item>@array/spinner1_item19</item>
+        <item>@array/spinner1_item20</item>
+        <item>@array/spinner1_item21</item>
+        <item>@array/spinner1_item22</item>
+        <item>@array/spinner1_item23</item>
+        <item>@array/spinner1_item24</item>
+        <item>@array/spinner1_item25</item>
+        <item>@array/spinner1_item26</item>
+        <item>@array/spinner1_item27</item>
+        <item>@array/spinner1_item28</item>
+        <item>@array/spinner1_item29</item>
+        <item>@array/spinner1_item30</item>
+        <item>@array/spinner1_item31</item>
+        <item>@array/spinner1_item32</item>
+        <item>@array/spinner1_item33</item>
+        <item>@array/spinner1_item34</item>
+        <item>@array/spinner1_item35</item>
+        <item>@array/spinner1_item36</item>
+        <item>@array/spinner1_item37</item>
+        <item>@array/spinner1_item38</item>
+        <item>@array/spinner1_item39</item>
+        <item>@array/spinner1_item40</item>
+        <item>@array/spinner1_item41</item>
+        <item>@array/spinner1_item42</item>
+        <item>@array/spinner1_item43</item>
+        <item>@array/spinner1_item44</item>
+        <item>@array/spinner1_item45</item>
+        <item>@array/spinner1_item46</item>
+        <item>@array/spinner1_item47</item>
     </array>
 </resources>
