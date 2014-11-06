@@ -12,6 +12,8 @@ public class Osusume_Route extends Activity  {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.osusume_route);
 
+
+
 		//配列準備
 		String[] o_route = {"おすすめルート１","おすすめルート２"};
 
@@ -20,7 +22,11 @@ public class Osusume_Route extends Activity  {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, o_route);
 		o_lv1.setAdapter(adapter);
 
+
+
 	}
+
+
 
 
 }
