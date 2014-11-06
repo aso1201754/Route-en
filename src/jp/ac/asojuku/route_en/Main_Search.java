@@ -1,6 +1,11 @@
 package jp.ac.asojuku.route_en;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +19,7 @@ import android.widget.Toast;
 
 public class Main_Search extends Activity implements View.OnClickListener{
 
-	String item = null;
+	KeyValuePair item = null;
 	String item2 = null;
 
 	private TextView tv = null;
@@ -30,84 +35,49 @@ public class Main_Search extends Activity implements View.OnClickListener{
 		//スピナー
 		_spinner =  (Spinner)this.findViewById(R.id.spinner1);
 		_spinner.setOnItemSelectedListener(Spinner1_OnItemSelectedListener);
+		//スピナーのドロップダウンアイテムを設定
+		List<KeyValuePair> list = getSpinnerData();
+		KeyValuePairArrayAdapter adapter = new KeyValuePairArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		_spinner.setAdapter(adapter);
+
 
 
 		//　button1登録
 		Button button = (Button)findViewById(R.id.button);
 		button.setOnClickListener(this);
 
-		KeyValuePairArrayAdapter todouhuken = new KeyValuePairArrayAdapter(this, android.R.layout.simple_spinner_item);
-		todouhuken.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-		//ArrayAdapter<String> todouhuken = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
-		//todouhuken.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-		// アイテムを追加します
-		todouhuken.add(new KeyValuePair(1,"北海道"));
-		todouhuken.add(new KeyValuePair(2,"青森県"));
-		todouhuken.add(new KeyValuePair(3,"岩手県"));
-		todouhuken.add(new KeyValuePair(4,"宮城県"));
-		todouhuken.add(new KeyValuePair(5,"秋田県"));
-		todouhuken.add(new KeyValuePair(6,"山形県"));
-		todouhuken.add(new KeyValuePair(7,"福島県"));
-		todouhuken.add(new KeyValuePair(8,"茨城県"));
-		todouhuken.add(new KeyValuePair(9,"栃木県"));
-		todouhuken.add(new KeyValuePair(10,"群馬県"));
-		todouhuken.add(new KeyValuePair(11,"埼玉県"));
-		todouhuken.add(new KeyValuePair(12,"千葉県"));
-		todouhuken.add(new KeyValuePair(13,"東京都"));
-		todouhuken.add(new KeyValuePair(14,"神奈川県"));
-		todouhuken.add(new KeyValuePair(15,"新潟県"));
-		todouhuken.add(new KeyValuePair(16,"富山県"));
-		todouhuken.add(new KeyValuePair(17,"石川県"));
-		todouhuken.add(new KeyValuePair(18,"福井県"));
-		todouhuken.add(new KeyValuePair(19,"山梨県"));
-		todouhuken.add(new KeyValuePair(20,"長野県"));
-		todouhuken.add(new KeyValuePair(21,"岐阜県"));
-		todouhuken.add(new KeyValuePair(22,"静岡県"));
-		todouhuken.add(new KeyValuePair(23,"愛知県"));
-		todouhuken.add(new KeyValuePair(24,"三重県"));
-		todouhuken.add(new KeyValuePair(25,"滋賀県"));
-		todouhuken.add(new KeyValuePair(26,"京都府"));
-		todouhuken.add(new KeyValuePair(27,"大阪府"));
-		todouhuken.add(new KeyValuePair(28,"兵庫県"));
-		todouhuken.add(new KeyValuePair(29,"奈良県"));
-		todouhuken.add(new KeyValuePair(30,"和歌山県"));
-		todouhuken.add(new KeyValuePair(31,"鳥取県"));
-		todouhuken.add(new KeyValuePair(32,"島根県"));
-		todouhuken.add(new KeyValuePair(33,"岡山県"));
-		todouhuken.add(new KeyValuePair(34,"広島県"));
-		todouhuken.add(new KeyValuePair(35,"山口県"));
-		todouhuken.add(new KeyValuePair(36,"徳島県"));
-		todouhuken.add(new KeyValuePair(37,"香川県"));
-		todouhuken.add(new KeyValuePair(38,"愛媛県"));
-		todouhuken.add(new KeyValuePair(39,"高知県"));
-		todouhuken.add(new KeyValuePair(40,"福岡県"));
-		todouhuken.add(new KeyValuePair(41,"佐賀県"));
-		todouhuken.add(new KeyValuePair(42,"長崎県"));
-		todouhuken.add(new KeyValuePair(43,"熊本県"));
-		todouhuken.add(new KeyValuePair(44,"大分県"));
-		todouhuken.add(new KeyValuePair(45,"宮崎県"));
-		todouhuken.add(new KeyValuePair(46,"鹿児島県"));
-		todouhuken.add(new KeyValuePair(47,"沖縄県"));
-		_spinner.setAdapter(todouhuken);
-		//キーが2の値を選択する
-		Integer selectKey = 2;
-		_spinner.setSelection(todouhuken.getPosition(selectKey));
 
 
 
 
 
 	}
+	private List<KeyValuePair> getSpinnerData(){
+		List<KeyValuePair> list = new ArrayList<KeyValuePair>();
+		Resources res = getResources();
+		TypedArray spinner1_data = res.obtainTypedArray(R.array.spinner1_data);
+		for (int i = 0; i < spinner1_data.length(); ++i) {
+			int id = spinner1_data.getResourceId(i, -1);
+			if (id > -1) {
+				String[] item_ = res.getStringArray(id);
+				list.add(new KeyValuePair(String.valueOf(item_[0]), item_[1]));
+			}
+		}
+		spinner1_data.recycle();
+		return list;
+	}
+
     private OnItemSelectedListener Spinner1_OnItemSelectedListener = new OnItemSelectedListener() {
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            KeyValuePair item = (KeyValuePair)_spinner.getSelectedItem();
+            item = (KeyValuePair)_spinner.getSelectedItem();
             Toast.makeText(Main_Search.this, item.getKey().toString(), Toast.LENGTH_LONG).show();
+
         }
         public void onNothingSelected(AdapterView<?> arg0) {
         }
     };
+
 
 
 	@Override
@@ -151,10 +121,10 @@ public class Main_Search extends Activity implements View.OnClickListener{
 					}
 				}
 				);
-		task.addPostParam( "text1", item );
+		task.addPostParam( "p_id", item.getKey().toString() );
 		//task.addPostParam( "text2", item2 );
 
-		Log.d("posttest", item);
+		Log.d("posttest", item.getKey().toString());
 
 		// タスクを開始
 		task.execute();
