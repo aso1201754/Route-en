@@ -1,5 +1,6 @@
 package jp.ac.asojuku.route_en;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.View;
@@ -22,6 +26,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +44,20 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	private Spinner _spinner = null;
 	KeyValuePair item;
 
+	//画像用
+	private static final int REQUEST_GALLERY1 = 0;
+	private static final int REQUEST_GALLERY2 = 0;
+	private static final int REQUEST_GALLERY3 = 0;
+	private ImageView imageView1;
+	private ImageView imageView2;
+	private ImageView imageView3;
+	//private Button btn1;
+	public Uri uri;
+	public InputStream in;
+	public Bitmap img;
+	private final int TARGET_WIDTH = 300;
+	private final int TARGET_HEIGHT = 300;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -53,6 +72,16 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		tv = (TextView)findViewById(R.id.tv1);
 
 		btn.setOnClickListener(this);
+
+		Button button1 = (Button)findViewById(R.id.button1);
+		button1.setOnClickListener(this);
+		imageView1 = (ImageView)findViewById(R.id.imageView1);
+		Button button2 = (Button)findViewById(R.id.button2);
+		button2.setOnClickListener(this);
+		imageView2 = (ImageView)findViewById(R.id.imageView2);
+		Button button3 = (Button)findViewById(R.id.button3);
+		button3.setOnClickListener(this);
+		imageView3 = (ImageView)findViewById(R.id.imageView3);
 
 
 		// editText1
@@ -120,6 +149,12 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			startActivity(intent4);
 		case R.id.btn1:
 			exec_post();
+		case R.id.button1:
+			gallery(1);
+		case R.id.button2:
+			gallery(2);
+		case R.id.button3:
+			gallery(3);
 		}
 
 	}
@@ -208,5 +243,67 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		}
 	};
 
+	private void gallery(int num){
+		// ギャラリー呼び出し
+		Intent intent = new Intent();
+		intent.setType("image/*");
+		intent.setAction(Intent.ACTION_GET_CONTENT);
+
+		if (num == 1) {
+			startActivityForResult(intent, REQUEST_GALLERY1);
+		} else if (num == 2){
+			startActivityForResult(intent, REQUEST_GALLERY2);
+		} else {
+			startActivityForResult(intent, REQUEST_GALLERY3);
+		}
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		if(requestCode == REQUEST_GALLERY1 && resultCode == RESULT_OK)
+		{
+			try
+			{
+				in = getContentResolver().openInputStream(data.getData());
+				img = BitmapFactory.decodeStream(in);
+				img = PictureUtil.resize(img, TARGET_WIDTH, TARGET_HEIGHT);
+				in.close();
+
+				// 選択した画像を表示
+				imageView1.setImageBitmap(img);
+			}
+			catch (Exception e)
+			{
+			}
+		} else if(requestCode == REQUEST_GALLERY2 && resultCode == RESULT_OK){
+			try
+			{
+				in = getContentResolver().openInputStream(data.getData());
+				img = BitmapFactory.decodeStream(in);
+				img = PictureUtil.resize(img, TARGET_WIDTH, TARGET_HEIGHT);
+				in.close();
+
+				// 選択した画像を表示
+				imageView2.setImageBitmap(img);
+			}
+			catch (Exception e)
+			{
+			}
+		} else if(requestCode == REQUEST_GALLERY3 && resultCode == RESULT_OK){
+			try
+			{
+				in = getContentResolver().openInputStream(data.getData());
+				img = BitmapFactory.decodeStream(in);
+				img = PictureUtil.resize(img, TARGET_WIDTH, TARGET_HEIGHT);
+				in.close();
+
+				// 選択した画像を表示
+				imageView3.setImageBitmap(img);
+			}
+			catch (Exception e)
+			{
+			}
+		}
+	}
 
 }
