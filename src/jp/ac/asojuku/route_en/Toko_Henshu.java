@@ -45,9 +45,9 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	KeyValuePair item;
 
 	//画像用
-	private static final int REQUEST_GALLERY1 = 0;
-	private static final int REQUEST_GALLERY2 = 0;
-	private static final int REQUEST_GALLERY3 = 0;
+	private static final int REQUEST_GALLERY1 = 1;
+	private static final int REQUEST_GALLERY2 = 2;
+	private static final int REQUEST_GALLERY3 = 3;
 	private ImageView imageView1;
 	private ImageView imageView2;
 	private ImageView imageView3;
@@ -55,8 +55,8 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	public Uri uri;
 	public InputStream in;
 	public Bitmap img;
-	private final int TARGET_WIDTH = 300;
-	private final int TARGET_HEIGHT = 300;
+	private final int TARGET_WIDTH = 100;
+	private final int TARGET_HEIGHT = 100;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -147,14 +147,19 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			doPost("http://toenp.php.xdomain.jp/test.php");
 			Intent intent4 = new Intent(Toko_Henshu.this, Toko_Sentaku.class);
 			startActivity(intent4);
+			break;
 		case R.id.btn1:
 			exec_post();
+			break;
 		case R.id.button1:
 			gallery(1);
+			break;
 		case R.id.button2:
 			gallery(2);
+			break;
 		case R.id.button3:
 			gallery(3);
+			break;
 		}
 
 	}
