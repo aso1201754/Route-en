@@ -26,6 +26,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -82,6 +83,8 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		Button button3 = (Button)findViewById(R.id.button3);
 		button3.setOnClickListener(this);
 		imageView3 = (ImageView)findViewById(R.id.imageView3);
+		ImageButton imageButton1 = (ImageButton)findViewById(R.id.imageButton1);
+		imageButton1.setOnClickListener(this);
 
 
 		// editText1
@@ -159,6 +162,11 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			break;
 		case R.id.button3:
 			gallery(3);
+			break;
+		case R.id.imageButton1:
+			Bitmap bitmap = img;
+			UploadAsyncTask task = new UploadAsyncTask(this);
+			task.execute(bitmap);
 			break;
 		}
 
