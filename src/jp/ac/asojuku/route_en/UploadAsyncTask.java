@@ -2,6 +2,7 @@ package jp.ac.asojuku.route_en;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.ProgressDialog;
@@ -20,24 +22,49 @@ import android.util.Log;
 public class UploadAsyncTask extends AsyncTask<Bitmap, Integer, Integer>{
 	ProgressDialog dialog;
 	Context context;
+
+	//entity初期化（暫定）
+	@SuppressWarnings("deprecation")
+	MultipartEntity entity = new MultipartEntity();
 	public UploadAsyncTask(Context context)
 	{
 		this.context = context;
 	}
 
+	  /* --------------------- POSTパラメータ --------------------- */
+
+
+	  // 追加
+	  public void addPostParam( String post_name, String post_value )
+	  {
+	    try {
+			entity.addPart( post_name, new StringBody(post_value) );
+		} catch (UnsupportedEncodingException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	  }
+
 	@Override
 	protected Integer doInBackground(Bitmap... params)
 	{
-		Bitmap picture = params[0];
+		Bitmap picture1 = params[0];
+		Bitmap picture2 = params[1];
+		Bitmap picture3 = params[2];
 		String resp = null;
-		String postUrl = "http://xxxxxxxxxx."; //(URL)
-		ByteArrayBody bab = PictureUtil.toByteArrayBody(picture);
+		String postUrl = "http://toenp.php.xdomain.jp/test.php"; //(URL)
+		ByteArrayBody bab1 = PictureUtil.toByteArrayBody(picture1);
+		ByteArrayBody bab2 = PictureUtil.toByteArrayBody(picture2);
+		ByteArrayBody bab3 = PictureUtil.toByteArrayBody(picture3);
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost post = new HttpPost(postUrl);
-		MultipartEntity entity = new MultipartEntity();
+		//@SuppressWarnings("deprecation")
+		//MultipartEntity entity = new MultipartEntity();
 		try
 		{
-			entity.addPart("userfile", bab);
+			entity.addPart("userfile1", bab1);
+			entity.addPart("userfile2", bab2);
+			entity.addPart("userfile3", bab3);
 			post.setEntity(entity);
 			HttpResponse response = httpClient.execute(post);
 			int status = response.getStatusLine().getStatusCode();

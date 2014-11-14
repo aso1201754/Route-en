@@ -38,6 +38,9 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	String text2;
 	String text3;
 	String text4;
+	String text5;
+	String text6;
+	String text7;
 
 	private Button btn = null;
 	private TextView tv = null;
@@ -55,7 +58,9 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	//private Button btn1;
 	public Uri uri;
 	public InputStream in;
-	public Bitmap img;
+	public Bitmap img1;
+	public Bitmap img2;
+	public Bitmap img3;
 	private final int TARGET_WIDTH = 100;
 	private final int TARGET_HEIGHT = 100;
 
@@ -64,6 +69,8 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.toko_henshu);
+
+		android.os.Debug.waitForDebugger();
 
 		// button4登録
 		Button button4 = (Button)findViewById(R.id.button4);
@@ -103,6 +110,15 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		EditText editText4 = (EditText)findViewById(R.id.editText4);
 		SpannableStringBuilder sb4 = (SpannableStringBuilder)editText4.getText();
 		text4 = sb4.toString();
+		EditText editText5 = (EditText)findViewById(R.id.editText5);
+		SpannableStringBuilder sb5 = (SpannableStringBuilder)editText5.getText();
+		text5 = sb5.toString();
+		EditText editText6 = (EditText)findViewById(R.id.editText6);
+		SpannableStringBuilder sb6 = (SpannableStringBuilder)editText6.getText();
+		text6 = sb6.toString();
+		EditText editText7 = (EditText)findViewById(R.id.editText7);
+		SpannableStringBuilder sb7 = (SpannableStringBuilder)editText7.getText();
+		text7 = sb7.toString();
 
 		/*
 		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
@@ -164,9 +180,26 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			gallery(3);
 			break;
 		case R.id.imageButton1:
-			Bitmap bitmap = img;
+			Bitmap bitmap1 = img1;
+			Bitmap bitmap2 = img2;
+			Bitmap bitmap3 = img3;
 			UploadAsyncTask task = new UploadAsyncTask(this);
-			task.execute(bitmap);
+
+			//文字列追加
+			task.addPostParam( "p_id", item.getKey().toString() );
+			task.addPostParam( "spot_comment_1", text1);
+			task.addPostParam( "spot_comment_2", text2);
+			task.addPostParam( "spot_comment_3", text3);
+			task.addPostParam( "con_comment", text4);
+			task.addPostParam( "spot_name_1", text5);
+			task.addPostParam( "spot_name_2", text6);
+			task.addPostParam( "spot_name_3", text7);
+			//ユーザID、コースID（暫定）
+			task.addPostParam( "user_id", "takiyama");
+			task.addPostParam( "c_id", "P01");
+
+
+			task.execute(bitmap1, bitmap2, bitmap3);
 			break;
 		}
 
@@ -278,12 +311,12 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			try
 			{
 				in = getContentResolver().openInputStream(data.getData());
-				img = BitmapFactory.decodeStream(in);
-				img = PictureUtil.resize(img, TARGET_WIDTH, TARGET_HEIGHT);
+				img1 = BitmapFactory.decodeStream(in);
+				img1 = PictureUtil.resize(img1, TARGET_WIDTH, TARGET_HEIGHT);
 				in.close();
 
 				// 選択した画像を表示
-				imageView1.setImageBitmap(img);
+				imageView1.setImageBitmap(img1);
 			}
 			catch (Exception e)
 			{
@@ -292,12 +325,12 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			try
 			{
 				in = getContentResolver().openInputStream(data.getData());
-				img = BitmapFactory.decodeStream(in);
-				img = PictureUtil.resize(img, TARGET_WIDTH, TARGET_HEIGHT);
+				img2 = BitmapFactory.decodeStream(in);
+				img2 = PictureUtil.resize(img2, TARGET_WIDTH, TARGET_HEIGHT);
 				in.close();
 
 				// 選択した画像を表示
-				imageView2.setImageBitmap(img);
+				imageView2.setImageBitmap(img2);
 			}
 			catch (Exception e)
 			{
@@ -306,12 +339,12 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			try
 			{
 				in = getContentResolver().openInputStream(data.getData());
-				img = BitmapFactory.decodeStream(in);
-				img = PictureUtil.resize(img, TARGET_WIDTH, TARGET_HEIGHT);
+				img3 = BitmapFactory.decodeStream(in);
+				img3 = PictureUtil.resize(img3, TARGET_WIDTH, TARGET_HEIGHT);
 				in.close();
 
 				// 選択した画像を表示
-				imageView3.setImageBitmap(img);
+				imageView3.setImageBitmap(img3);
 			}
 			catch (Exception e)
 			{

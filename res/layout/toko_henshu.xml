@@ -48,6 +48,36 @@
         android:layout_height="wrap_content"
         android:text="おすすめスポット" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:text="スポ1" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:text="スポ2" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:text="スポ3" />
+
+    </LinearLayout>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -70,7 +100,8 @@
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:lines="2"
-                android:maxLines="2" />
+                android:maxLines="2"
+                android:text="スポット1コメント" />
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -98,7 +129,8 @@
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:lines="2"
-                android:maxLines="2" >
+                android:maxLines="2"
+                android:text="スポット2コメント" >
 
                 <requestFocus />
             </EditText>
@@ -129,7 +161,8 @@
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:lines="2"
-                android:maxLines="2" />
+                android:maxLines="2"
+                android:text="スポット3コメント" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -145,7 +178,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:text="投稿コメント" />
 
     <LinearLayout
         android:layout_width="match_parent"
