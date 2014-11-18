@@ -3,11 +3,13 @@ package jp.ac.asojuku.route_en;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.entity.mime.content.StringBody;
@@ -25,7 +27,10 @@ public class UploadAsyncTask extends AsyncTask<Bitmap, Integer, Integer>{
 
 	//entity初期化（暫定）
 	@SuppressWarnings("deprecation")
-	MultipartEntity entity = new MultipartEntity();
+	//MultipartEntity entity = new MultipartEntity();
+	MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+	//private Activity Toko_Henshu;
+	//String resp;
 	public UploadAsyncTask(Context context)
 	{
 		this.context = context;
@@ -38,7 +43,8 @@ public class UploadAsyncTask extends AsyncTask<Bitmap, Integer, Integer>{
 	  public void addPostParam( String post_name, String post_value )
 	  {
 	    try {
-			entity.addPart( post_name, new StringBody(post_value) );
+			//entity.addPart( post_name, new StringBody(post_value) );
+	    	entity.addPart( post_name, new StringBody(post_value, Charset.forName("UTF-8")) );
 		} catch (UnsupportedEncodingException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
@@ -86,6 +92,8 @@ public class UploadAsyncTask extends AsyncTask<Bitmap, Integer, Integer>{
 		if(dialog != null){
 			dialog.dismiss();
 		}
+		//TextView tv = (TextView)this.Toko_Henshu.findViewById(R.id.tv1);
+		//tv.setText(resp);
 	}
 
 	@Override

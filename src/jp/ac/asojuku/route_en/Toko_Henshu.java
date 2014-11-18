@@ -90,7 +90,7 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		Button button3 = (Button)findViewById(R.id.button3);
 		button3.setOnClickListener(this);
 		imageView3 = (ImageView)findViewById(R.id.imageView3);
-		ImageButton imageButton1 = (ImageButton)findViewById(R.id.imageButton1);
+		ImageButton imageButton1 = (ImageButton)findViewById(R.id.btnToko);
 		imageButton1.setOnClickListener(this);
 
 
@@ -179,7 +179,7 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		case R.id.button3:
 			gallery(3);
 			break;
-		case R.id.imageButton1:
+		case R.id.btnToko:
 			Bitmap bitmap1 = img1;
 			Bitmap bitmap2 = img2;
 			Bitmap bitmap3 = img3;
