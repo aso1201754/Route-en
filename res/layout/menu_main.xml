@@ -2,30 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/image1"
     android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:src="@drawable/menu" />
 
     <ImageButton
         android:id="@+id/btnToko"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:scaleType="fitCenter"
         android:src="@drawable/image2" />
 
     <ImageButton
         android:id="@+id/btnKensaku"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:scaleType="fitCenter"
         android:src="@drawable/btn_kensaku" />
 
     <ImageButton
         android:id="@+id/btnKiroku"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:scaleType="fitCenter"
         android:src="@drawable/btn_kiroku" />
 
     <ImageButton
         android:id="@+id/btnMypage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:scaleType="fitCenter"
         android:src="@drawable/btn_mypage" />
 
 </LinearLayout>

@@ -10,17 +10,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/textView1"
+        <EditText
+            android:id="@+id/etUserId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ユーザ名" />
+            android:layout_weight="1"
+            android:ems="10"
+            android:maxLines="1"
+            android:text="UserName" />
 
-        <TextView
-            android:id="@+id/textView2"
+        <EditText
+            android:id="@+id/etCourseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="コース名" />
+            android:layout_weight="1"
+            android:ems="10"
+            android:maxLines="1"
+            android:text="CourseName" />
 
     </LinearLayout>
 
@@ -58,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:maxLines="1"
             android:text="スポ1" />
 
         <EditText
@@ -66,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:maxLines="1"
             android:text="スポ2" />
 
         <EditText
@@ -74,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:maxLines="1"
             android:text="スポ3" />
 
     </LinearLayout>
@@ -91,7 +100,14 @@
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="画像選択"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher" />
 
             <EditText
                 android:id="@+id/editText1"
@@ -102,12 +118,6 @@
                 android:lines="2"
                 android:maxLines="2"
                 android:text="スポット1コメント" />
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher" />
 
         </TableRow>
 
@@ -120,7 +130,14 @@
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="画像選択"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -130,17 +147,7 @@
                 android:inputType="textMultiLine"
                 android:lines="2"
                 android:maxLines="2"
-                android:text="スポット2コメント" >
-
-                <requestFocus />
-            </EditText>
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher" />
-
+                android:text="スポット2コメント" />
         </TableRow>
 
         <TableRow
@@ -152,7 +159,14 @@
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="画像選択"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher" />
 
             <EditText
                 android:id="@+id/editText3"
@@ -164,12 +178,6 @@
                 android:maxLines="2"
                 android:text="スポット3コメント" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher" />
-
         </TableRow>
     </TableLayout>
 
@@ -179,42 +187,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textMultiLine"
+        android:lines="3"
+        android:maxLines="3"
         android:text="投稿コメント" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="戻る" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="投稿" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
     <ImageButton
         android:id="@+id/btnToko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@null"
         android:scaleType="center"
         android:src="@drawable/image2" />
 

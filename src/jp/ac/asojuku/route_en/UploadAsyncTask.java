@@ -58,7 +58,7 @@ public class UploadAsyncTask extends AsyncTask<Bitmap, Integer, Integer>{
 		Bitmap picture2 = params[1];
 		Bitmap picture3 = params[2];
 		String resp = null;
-		String postUrl = "http://toenp.php.xdomain.jp/test.php"; //(URL)
+		String postUrl = "http://toenp.php.xdomain.jp/Contribute.php"; //(URL)
 		ByteArrayBody bab1 = PictureUtil.toByteArrayBody(picture1);
 		ByteArrayBody bab2 = PictureUtil.toByteArrayBody(picture2);
 		ByteArrayBody bab3 = PictureUtil.toByteArrayBody(picture3);

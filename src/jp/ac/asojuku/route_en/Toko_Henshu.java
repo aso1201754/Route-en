@@ -4,13 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -29,7 +22,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Toko_Henshu extends Activity implements View.OnClickListener {
@@ -41,9 +33,11 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	String text5;
 	String text6;
 	String text7;
+	String txtUid;
+	String txtCname;
 
-	private Button btn = null;
-	private TextView tv = null;
+	//private Button btn = null;
+	//private TextView tv = null;
 
 	private Spinner _spinner = null;
 	KeyValuePair item;
@@ -72,14 +66,16 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 
 		android.os.Debug.waitForDebugger();
 
+		/*
 		// button4登録
 		Button button4 = (Button)findViewById(R.id.button4);
 		button4.setOnClickListener(this);
+		*/
 
-		btn = (Button)findViewById(R.id.btn1);
-		tv = (TextView)findViewById(R.id.tv1);
+		//btn = (Button)findViewById(R.id.btn1);
+		//tv = (TextView)findViewById(R.id.tv1);
 
-		btn.setOnClickListener(this);
+		//btn.setOnClickListener(this);
 
 		Button button1 = (Button)findViewById(R.id.button1);
 		button1.setOnClickListener(this);
@@ -119,6 +115,12 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		EditText editText7 = (EditText)findViewById(R.id.editText7);
 		SpannableStringBuilder sb7 = (SpannableStringBuilder)editText7.getText();
 		text7 = sb7.toString();
+		EditText etUserId = (EditText)findViewById(R.id.etUserId);
+		SpannableStringBuilder sb8 = (SpannableStringBuilder)etUserId.getText();
+		txtUid = sb8.toString();
+		EditText etCourseName = (EditText)findViewById(R.id.etCourseName);
+		SpannableStringBuilder sb9 = (SpannableStringBuilder)etCourseName.getText();
+		txtCname = sb9.toString();
 
 		/*
 		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
@@ -162,14 +164,18 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 	public void onClick(View v) {
 		// TODO 自動生成されたメソッド・スタブ
 		switch(v.getId()){
+		/*
 		case R.id.button4:
 			doPost("http://toenp.php.xdomain.jp/test.php");
 			Intent intent4 = new Intent(Toko_Henshu.this, Toko_Sentaku.class);
 			startActivity(intent4);
 			break;
+		*/
+		/*
 		case R.id.btn1:
 			exec_post();
 			break;
+		*/
 		case R.id.button1:
 			gallery(1);
 			break;
@@ -195,8 +201,8 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			task.addPostParam( "spot_name_2", text6);
 			task.addPostParam( "spot_name_3", text7);
 			//ユーザID、コースID（暫定）
-			task.addPostParam( "user_id", "takiyama");
-			task.addPostParam( "c_id", "P01");
+			task.addPostParam( "user_id", txtUid);
+			task.addPostParam( "c_id", "C01");
 
 
 			task.execute(bitmap1, bitmap2, bitmap3);
@@ -205,6 +211,7 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 
 	}
 
+	/*
 	public String doPost(String url) {
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpPost method = new HttpPost(url);
@@ -221,7 +228,9 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			return "Error:" + e.getMessage();
 		}
 	}
+	*/
 
+	/*
 	// POST通信を実行（AsyncTaskによる非同期処理を使うバージョン）
 	private void exec_post() {
 
@@ -257,6 +266,7 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		task.execute();
 
 	}
+	*/
 
 	/**
 	 * @brief スピナーデータを取得します。
