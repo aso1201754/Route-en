@@ -8,5 +8,15 @@
     <string name="test2">テスト２</string>
     <string name="test3">テスト３</string>
 
+    <string name="menu_setting">Setting</string>
+    <string name="get_address">住所取得</string>
+    <string name="rec_point">記録</string>
+    <string name="alert_dialog_fin_confirm_title">記録確認</string>
+   <string name="alert_dialog_fin_confirm_message">本当にここを記録しますか？</string>
+  <string name="alert_dialog_ok">OK</string>
+   <string name="alert_dialog_cancel">Cancel</string>
+    <string name="marker_on">マーカーを表示</string>
+   <string name="marker_off">マーカーを非表示</string>
+
 
 </resources>

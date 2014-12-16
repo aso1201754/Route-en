@@ -40,6 +40,16 @@ public class MainMenu extends Activity implements View.OnClickListener {
 			startActivity(intent1);
 			break;
 
+		case R.id.btnKensaku:
+			Intent intent2 = new Intent(MainMenu.this, Main_Search.class);
+			startActivity(intent2);
+			break;
+
+		case R.id.btnKiroku:
+			Intent intent3 = new Intent(MainMenu.this, MainActivity.class);
+			startActivity(intent3);
+			break;
+
 		}
 	}
 

@@ -190,6 +190,19 @@
         <item name="value">沖縄県</item>
     </string-array>
 
+    <string-array name="spinner2_item1">
+        <item name="key">C01</item>
+        <item name="value">家族</item>
+    </string-array>
+    <string-array name="spinner2_item2">
+        <item name="key">C02</item>
+        <item name="value">デート</item>
+    </string-array>
+    <string-array name="spinner2_item3">
+        <item name="key">C03</item>
+        <item name="value">一人で</item>
+    </string-array>
+
     <array name="spinner1_data">
         <item>@array/spinner1_item1</item>
         <item>@array/spinner1_item2</item>
@@ -238,5 +251,11 @@
         <item>@array/spinner1_item45</item>
         <item>@array/spinner1_item46</item>
         <item>@array/spinner1_item47</item>
+    </array>
+
+    <array name="spinner2_data">
+        <item>@array/spinner2_item1</item>
+        <item>@array/spinner2_item2</item>
+        <item>@array/spinner2_item3</item>
     </array>
 </resources>

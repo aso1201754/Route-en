@@ -16,7 +16,6 @@ import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -41,6 +40,9 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 
 	private Spinner _spinner = null;
 	KeyValuePair item;
+
+	private Spinner _spinner2 = null;
+	KeyValuePair item2;
 
 	//画像用
 	private static final int REQUEST_GALLERY1 = 1;
@@ -146,6 +148,16 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		// Integer selectKey = 2;
 		//_spinner.setSelection(adapter.getPosition(selectKey));
 
+		//スピナー
+		_spinner2 =  (Spinner)this.findViewById(R.id.spinner2);
+		_spinner2.setOnItemSelectedListener(Spinner2_OnItemSelectedListener);
+		//スピナーのドロップダウンアイテムを設定
+		List<KeyValuePair> list2 = getSpinnerData2();
+		KeyValuePairArrayAdapter adapter2 = new KeyValuePairArrayAdapter(this, android.R.layout.simple_spinner_item, list2);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		_spinner2.setAdapter(adapter2);
+
+		/*
 		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// アイテムを追加します
@@ -157,6 +169,8 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		Spinner spinner2 = (Spinner)findViewById(R.id.spinner2);
 		// アダプターを設定します
 		spinner2.setAdapter(adapter2);
+		*/
+
 
 	}
 
@@ -191,6 +205,38 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			Bitmap bitmap3 = img3;
 			UploadAsyncTask task = new UploadAsyncTask(this);
 
+			// text取得
+			// editText1
+			EditText editText1 = (EditText)findViewById(R.id.editText1);
+			SpannableStringBuilder sb1 = (SpannableStringBuilder)editText1.getText();
+			text1 = sb1.toString();
+			// editText2
+			EditText editText2 = (EditText)findViewById(R.id.editText2);
+			SpannableStringBuilder sb2 = (SpannableStringBuilder)editText2.getText();
+			text2 = sb2.toString();
+			// editText3
+			EditText editText3 = (EditText)findViewById(R.id.editText3);
+			SpannableStringBuilder sb3 = (SpannableStringBuilder)editText3.getText();
+			text3 = sb3.toString();
+			// editText4
+			EditText editText4 = (EditText)findViewById(R.id.editText4);
+			SpannableStringBuilder sb4 = (SpannableStringBuilder)editText4.getText();
+			text4 = sb4.toString();
+			EditText editText5 = (EditText)findViewById(R.id.editText5);
+			SpannableStringBuilder sb5 = (SpannableStringBuilder)editText5.getText();
+			text5 = sb5.toString();
+			EditText editText6 = (EditText)findViewById(R.id.editText6);
+			SpannableStringBuilder sb6 = (SpannableStringBuilder)editText6.getText();
+			text6 = sb6.toString();
+			EditText editText7 = (EditText)findViewById(R.id.editText7);
+			SpannableStringBuilder sb7 = (SpannableStringBuilder)editText7.getText();
+			text7 = sb7.toString();
+			EditText etUserId = (EditText)findViewById(R.id.etUserId);
+			SpannableStringBuilder sb8 = (SpannableStringBuilder)etUserId.getText();
+			txtUid = sb8.toString();
+			EditText etCourseName = (EditText)findViewById(R.id.etCourseName);
+			SpannableStringBuilder sb9 = (SpannableStringBuilder)etCourseName.getText();
+			txtCname = sb9.toString();
 			//文字列追加
 			task.addPostParam( "p_id", item.getKey().toString() );
 			task.addPostParam( "spot_comment_1", text1);
@@ -202,7 +248,7 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 			task.addPostParam( "spot_name_3", text7);
 			//ユーザID、コースID（暫定）
 			task.addPostParam( "user_id", txtUid);
-			task.addPostParam( "c_id", "C01");
+			task.addPostParam( "c_id", item2.getKey().toString());
 
 
 			task.execute(bitmap1, bitmap2, bitmap3);
@@ -294,6 +340,38 @@ public class Toko_Henshu extends Activity implements View.OnClickListener {
 		public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 			item = (KeyValuePair)_spinner.getSelectedItem();
 			Toast.makeText(Toko_Henshu.this, item.getKey().toString(), Toast.LENGTH_LONG).show();
+		}
+		public void onNothingSelected(AdapterView<?> arg0) {
+		}
+	};
+
+	//スピナー2
+	/**
+	 * @brief スピナーデータを取得します。
+	 * @return
+	 */
+	private List<KeyValuePair> getSpinnerData2(){
+		List<KeyValuePair> list = new ArrayList<KeyValuePair>();
+		Resources res = getResources();
+		TypedArray spinner2_data = res.obtainTypedArray(R.array.spinner2_data);
+		for (int i = 0; i < spinner2_data.length(); ++i) {
+			int id = spinner2_data.getResourceId(i, -1);
+			if (id > -1) {
+				String[] item = res.getStringArray(id);
+				list.add(new KeyValuePair(item[0], item[1]));
+			}
+		}
+		spinner2_data.recycle();
+		return list;
+	}
+
+	/**
+	 * @brief スピナーのOnItemSelectedListener
+	 */
+	private OnItemSelectedListener Spinner2_OnItemSelectedListener = new OnItemSelectedListener() {
+		public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+			item2 = (KeyValuePair)_spinner2.getSelectedItem();
+			Toast.makeText(Toko_Henshu.this, item2.getKey().toString(), Toast.LENGTH_LONG).show();
 		}
 		public void onNothingSelected(AdapterView<?> arg0) {
 		}
